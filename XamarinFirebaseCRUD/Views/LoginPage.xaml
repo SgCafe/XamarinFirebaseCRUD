@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinFirebaseCRUD.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout>
+                <!--  Titulo  -->
+                <StackLayout
+                    Padding="80"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Title"
+                        Text="LOGIN"
+                        TextColor="Black" />
+                </StackLayout>
+
+
+                <!--  Tela de login  -->
+                <StackLayout VerticalOptions="Center">
+                    <Frame Margin="20" BackgroundColor="Transparent">
+                        <StackLayout>
+                            <Label
+                                FontSize="Body"
+                                HorizontalOptions="Start"
+                                Text="E-mail"
+                                TextColor="Black" />
+                            <Entry
+                                x:Name="TXTEmail"
+                                ClearButtonVisibility="WhileEditing"
+                                Keyboard="Email"
+                                ReturnType="Next" />
+                            <Label
+                                FontSize="Body"
+                                HorizontalOptions="Start"
+                                Text="Senha"
+                                TextColor="Black" />
+                            <Entry
+                                x:Name="TXTSenha"
+                                ClearButtonVisibility="WhileEditing"
+                                IsPassword="True"
+                                Keyboard="Default"
+                                ReturnType="Done" />
+                        </StackLayout>
+                    </Frame>
+                    <Button
+                        x:Name="BTNLogar"
+                        BackgroundColor="Black"
+                        CornerRadius="20"
+                        HorizontalOptions="Center"
+                        Text="Logar"
+                        TextColor="White" />
+                    <Button
+                        x:Name="BTNCriar"
+                        BackgroundColor="Transparent"
+                        CornerRadius="20"
+                        FontAttributes="Italic"
+                        HorizontalOptions="Center"
+                        Text="Não tem uma conta? Criar uma conta."
+                        TextColor="Gray"
+                        TextTransform="None" />
+                </StackLayout>
+            </StackLayout>
+
+            <!--  Botão de "Sobre"  -->
+            <StackLayout VerticalOptions="End">
+                <Button
+                    x:Name="BTNSobre"
+                    BackgroundColor="Transparent"
+                    CornerRadius="20"
+                    FontAttributes="Italic"
+                    HorizontalOptions="Center"
+                    Text="Sobre"
+                    TextColor="Gray"
+                    TextTransform="None" />
+
+            </StackLayout>
+
+            <BoxView
+                x:Name="BVTelaPreta"
+                IsVisible="false"
+                Opacity="0.5"
+                Color="Black" />
+            <ActivityIndicator
+                x:Name="ACTRoda"
+                IsRunning="False"
+                IsVisible="false"
+                Scale="0.2"
+                Color="white" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

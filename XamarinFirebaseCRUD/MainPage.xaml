@@ -2,4 +2,11 @@
 <Shell
     x:Class="XamarinFirebaseCRUD.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" />
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:XamarinFirebaseCRUD.Views"
+    FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
+
+    <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
+
+</Shell>
