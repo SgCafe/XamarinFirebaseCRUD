@@ -32,7 +32,8 @@
                                 x:Name="TXTEmail"
                                 ClearButtonVisibility="WhileEditing"
                                 Keyboard="Email"
-                                ReturnType="Next" />
+                                ReturnType="Next"
+                                Text="{Binding Email}" />
                             <Label
                                 FontSize="Body"
                                 HorizontalOptions="Start"
@@ -43,12 +44,14 @@
                                 ClearButtonVisibility="WhileEditing"
                                 IsPassword="True"
                                 Keyboard="Default"
-                                ReturnType="Done" />
+                                ReturnType="Done"
+                                Text="{Binding Password}" />
                         </StackLayout>
                     </Frame>
                     <Button
                         x:Name="BTNLogar"
                         BackgroundColor="Black"
+                        Command="{Binding LogarCommand}"
                         CornerRadius="20"
                         HorizontalOptions="Center"
                         Text="Logar"
@@ -56,6 +59,7 @@
                     <Button
                         x:Name="BTNCriar"
                         BackgroundColor="Transparent"
+                        Command="{Binding RegisterCommand}"
                         CornerRadius="20"
                         FontAttributes="Italic"
                         HorizontalOptions="Center"
@@ -70,6 +74,7 @@
                 <Button
                     x:Name="BTNSobre"
                     BackgroundColor="Transparent"
+                    Command="{Binding AboutCommand}"
                     CornerRadius="20"
                     FontAttributes="Italic"
                     HorizontalOptions="Center"

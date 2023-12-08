@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinFirebaseCRUD.Service;
 
 namespace XamarinFirebaseCRUD
 {
@@ -11,6 +12,7 @@ namespace XamarinFirebaseCRUD
             InitializeComponent();
 
             MainPage = new MainPage();
+            DependencyService.Register<IUserService, UserService>();
         }
 
         protected override void OnStart()
