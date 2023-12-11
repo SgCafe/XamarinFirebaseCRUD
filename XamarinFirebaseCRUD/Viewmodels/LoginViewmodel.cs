@@ -29,6 +29,13 @@ namespace XamarinFirebaseCRUD.Viewmodels
             set => SetProperty(ref _password, value);
         }
 
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
+
 
         #endregion
 
@@ -54,26 +61,45 @@ namespace XamarinFirebaseCRUD.Viewmodels
         #endregion
 
         #region methods
+        private void IsLoading()
+        {
+            if (IsBusy)
+            {
+                IsBusy = false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+        }
+
         private async void ExecuteLoginCommand()
         {
             try
             {
+                IsLoading();
                 var verifyLogin = _userService.UserExist(Email, Password);
 
                 if (await verifyLogin)
                 {
                     await Shell.Current.DisplayAlert("Sucesso", "Usuário Logado.", "Ok");
+
+                    Email = string.Empty;
+                    Password = string.Empty;
+
                     await Navigation.PushAsync(new ContactsPage());
+                    IsLoading();
                 }
                 else
                 {
                     await Shell.Current.DisplayAlert("Error", "Usuário e senha não correspondem.", "Ok");
-
+                    IsLoading();
                 }
             }
             catch (Exception ex)
             {
                 await Shell.Current.DisplayAlert("Erro", $"Ocorreu um erro. {ex.Message}", "Ok");
+                IsLoading();
             }
         }
 

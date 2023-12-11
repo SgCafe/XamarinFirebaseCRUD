@@ -85,13 +85,13 @@
 
             <BoxView
                 x:Name="BVTelaPreta"
-                IsVisible="false"
+                IsVisible="{Binding IsBusy}"
                 Opacity="0.5"
                 Color="Black" />
             <ActivityIndicator
                 x:Name="ACTRoda"
-                IsRunning="False"
-                IsVisible="false"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
                 Scale="0.2"
                 Color="white" />
         </Grid>

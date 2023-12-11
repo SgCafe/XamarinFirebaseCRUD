@@ -34,6 +34,13 @@ namespace XamarinFirebaseCRUD.Viewmodels
             set => SetProperty(ref _passwordConfirm, value);
         }
 
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
+
         #endregion
 
         #region constructor
@@ -52,20 +59,44 @@ namespace XamarinFirebaseCRUD.Viewmodels
         #endregion
 
         #region methods
+
+        private void IsLoading()
+        {
+            if (IsBusy)
+            {
+                IsBusy = false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+        }
+
         private async void ExecuteCreateUserCommand()
         {
+
+            if (EmailCreate == null || PasswordCreate == null || PasswordCreate == null)
+            {
+                IsLoading();
+                await Shell.Current.DisplayAlert("Erro", "Os Campos não podem ser vazios.", "Ok");
+                return;
+            }
+
             if (PasswordCreate != PasswordConfirm)
             {
+                IsLoading();
                 await Shell.Current.DisplayAlert("Erro", "As senhas devem ser iguais.", "Ok");
                 return;
             }
 
             try
             {
+                IsLoading();
                 //TODO -> Criar criptografia de senha, Colocar 
                 var verifyAccountExist = await _userService.UserExist(EmailCreate, PasswordCreate);
                 if (verifyAccountExist)
                 {
+                    IsLoading();
                     await Shell.Current.DisplayAlert("Erro", "Usuário ja criado", "Ok");
                     return;
                 }
@@ -74,12 +105,14 @@ namespace XamarinFirebaseCRUD.Viewmodels
 
                 if (createAccount)
                 {
+                    IsLoading();
                     await Shell.Current.DisplayAlert("Sucesso", "Conta criada com sucesso!", "Ok");
                     await Navigation.PopAsync();
                 }
 
                 else
                 {
+                    IsLoading();
                     await Shell.Current.DisplayAlert("Erro", "Não foi possível criar um usuário!", "Ok");
                     return;
                 }
@@ -88,6 +121,7 @@ namespace XamarinFirebaseCRUD.Viewmodels
             }
             catch (Exception ex)
             {
+                IsLoading();
                 await Shell.Current.DisplayAlert("Erro", $"Erro: {ex.Message}", "Ok");
             }
         }
