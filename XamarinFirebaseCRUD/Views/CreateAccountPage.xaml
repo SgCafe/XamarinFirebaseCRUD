@@ -32,7 +32,8 @@
                                 x:Name="TXTCriarEmail"
                                 ClearButtonVisibility="WhileEditing"
                                 Keyboard="Email"
-                                ReturnType="Next" />
+                                ReturnType="Next"
+                                Text="{Binding EmailCreate}" />
                             <Label
                                 FontSize="Body"
                                 HorizontalOptions="Start"
@@ -43,7 +44,8 @@
                                 ClearButtonVisibility="WhileEditing"
                                 IsPassword="True"
                                 Keyboard="Default"
-                                ReturnType="Next" />
+                                ReturnType="Next"
+                                Text="{Binding PasswordCreate}" />
                             <Label
                                 FontSize="Body"
                                 HorizontalOptions="Start"
@@ -54,12 +56,14 @@
                                 ClearButtonVisibility="WhileEditing"
                                 IsPassword="True"
                                 Keyboard="Default"
-                                ReturnType="Done" />
+                                ReturnType="Done"
+                                Text="{Binding PasswordConfirm}" />
                         </StackLayout>
                     </Frame>
                     <Button
                         x:Name="BTNCriarAcesso"
                         BackgroundColor="Black"
+                        Command="{Binding CreateUserCommand}"
                         CornerRadius="20"
                         HorizontalOptions="Center"
                         Text="Criar"
@@ -67,6 +71,7 @@
                     <Button
                         x:Name="BTNCancelar"
                         BackgroundColor="Transparent"
+                        Command="{Binding CancelCommand}"
                         CornerRadius="20"
                         FontAttributes="Italic"
                         HorizontalOptions="Center"

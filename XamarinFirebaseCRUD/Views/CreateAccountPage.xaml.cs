@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinFirebaseCRUD.Viewmodels;
 
 namespace XamarinFirebaseCRUD.Views
 {
@@ -15,6 +16,7 @@ namespace XamarinFirebaseCRUD.Views
         public CreateAccountPage()
         {
             InitializeComponent();
+            BindingContext = new CreateAccountViewmodel(Navigation);
         }
     }
 }

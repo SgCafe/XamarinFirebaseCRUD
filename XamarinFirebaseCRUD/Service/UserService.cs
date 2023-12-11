@@ -20,6 +20,11 @@ namespace XamarinFirebaseCRUD.Service
         {
             try
             {
+                if(await UserExist(username, password))
+                {
+                    throw new Exception("O usuário já existe");
+                }
+
                 await Client.Child("Users")
                     .PostAsync(new Users()
                     {
@@ -44,7 +49,7 @@ namespace XamarinFirebaseCRUD.Service
                     .FirstOrDefault();
                 return consult != null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Shell.Current.DisplayAlert("Usuario já criado", "O usuário existe, por favor, utilize outro email ou acesse o email criado.", "Ok");
                 return false;

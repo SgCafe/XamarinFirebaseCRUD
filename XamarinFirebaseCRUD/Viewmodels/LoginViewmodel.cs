@@ -37,7 +37,7 @@ namespace XamarinFirebaseCRUD.Viewmodels
         {
             Navigation = navigation;
             _userService = new UserService();
-            LoginCommand = new Command(ExecuteLoginCommand);
+            LogarCommand = new Command(ExecuteLoginCommand);
             RegisterCommand = new Command(ExecuteRegisterCommand);
             AboutCommand = new Command(ExecuteAboutCommand);
         }
@@ -48,7 +48,7 @@ namespace XamarinFirebaseCRUD.Viewmodels
         #endregion
 
         #region commands
-        public ICommand LoginCommand { get; set; }
+        public ICommand LogarCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
         public ICommand AboutCommand { get; set; }
         #endregion
@@ -60,7 +60,7 @@ namespace XamarinFirebaseCRUD.Viewmodels
             {
                 var verifyLogin = _userService.UserExist(Email, Password);
 
-                if (verifyLogin != null)
+                if (await verifyLogin)
                 {
                     await Shell.Current.DisplayAlert("Sucesso", "Usuário Logado.", "Ok");
                     await Navigation.PushAsync(new ContactsPage());
