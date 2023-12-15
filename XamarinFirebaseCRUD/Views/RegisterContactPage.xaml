@@ -3,13 +3,210 @@
     x:Class="XamarinFirebaseCRUD.Views.RegisterContactPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
     Shell.FlyoutBehavior="Disabled">
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <Grid>
+                <StackLayout Padding="10" VerticalOptions="Start">
+                    <Label
+                        FontSize="Title"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Cadastrar"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand" />
+                    <Frame
+                        Margin="0,20"
+                        BorderColor="Black"
+                        CornerRadius="10">
+                        <Grid ColumnDefinitions="auto,*,*,*" RowDefinitions="auto">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="Nome: "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTNome"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="Telefone 1 "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTTel1"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="Telefone 2 "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTTel2"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3" />
+
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="E-mail: "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTEmail"
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3" />
+
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4"
+                                FontAttributes="Italic"
+                                HorizontalOptions="Start"
+                                Text="Endereço "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="CEP: "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTCep"
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference TXTNumero}"
+                                ReturnType="Next"
+                                Text="{Binding CepTxt}">
+                                <Entry.Behaviors>
+                                    <toolkit:EventToCommandBehavior Command="{Binding FindCepCommand}" EventName="Unfocused" />
+                                </Entry.Behaviors>
+                            </Entry>
+
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="Logradouro: "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTLogradouro"
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3"
+                                ReturnType="Next"
+                                Text="{Binding LogradouroTxt}" />
+
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="Nº: "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTNumero"
+                                Grid.Row="7"
+                                Grid.Column="1"
+                                Text="{Binding NumberTxt}" />
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="2"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="Compl.: "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTComplemento"
+                                Grid.Row="7"
+                                Grid.Column="3" />
+
+                            <Label
+                                Grid.Row="8"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="Bairro: "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTBairro"
+                                Grid.Row="8"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3"
+                                Text="{Binding BairroTxt}" />
+
+                            <Label
+                                Grid.Row="9"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="Cidade: "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTCidade"
+                                Grid.Row="9"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3"
+                                Text="{Binding CidadeTxt}" />
+
+                            <Label
+                                Grid.Row="10"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                Text="UF "
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                x:Name="TXTUF"
+                                Grid.Row="10"
+                                Grid.Column="1"
+                                Text="{Binding UfTxt}" />
+
+                        </Grid>
+                    </Frame>
+
+                    <Button
+                        x:Name="BTNSalvar"
+                        Margin="0,-20,0,0"
+                        BackgroundColor="Black"
+                        CornerRadius="20"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Salvar"
+                        TextColor="White" />
+
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

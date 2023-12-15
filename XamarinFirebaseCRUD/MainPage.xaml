@@ -12,7 +12,10 @@
     </ShellItem>
 
 
-    <TabBar>
+    <TabBar
+        Shell.TabBarBackgroundColor="Black"
+        Shell.TabBarTitleColor="White"
+        Shell.TabBarUnselectedColor="White">
         <Tab Title="Contatos">
             <ShellContent ContentTemplate="{DataTemplate views:ContactsPage}" Route="ContactsShell" />
         </Tab>
