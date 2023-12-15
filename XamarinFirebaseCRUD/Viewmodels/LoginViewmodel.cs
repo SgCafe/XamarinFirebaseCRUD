@@ -87,7 +87,7 @@ namespace XamarinFirebaseCRUD.Viewmodels
                     Email = string.Empty;
                     Password = string.Empty;
 
-                    await Navigation.PushAsync(new ContactsPage());
+                    await Shell.Current.GoToAsync("//ContactsShell");
                     IsLoading();
                 }
                 else

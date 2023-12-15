@@ -4,9 +4,25 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:XamarinFirebaseCRUD.Views"
-    FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False">
 
-    <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
+
+    <ShellItem Route="Login">
+        <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Shell.NavBarIsVisible="False" />
+    </ShellItem>
+
+
+    <TabBar>
+        <Tab Title="Contatos">
+            <ShellContent ContentTemplate="{DataTemplate views:ContactsPage}" Route="ContactsShell" />
+        </Tab>
+        <Tab Title="Detalhes">
+            <ShellContent ContentTemplate="{DataTemplate views:DetailPage}" Route="DetailShell" />
+        </Tab>
+        <Tab Title="Registro">
+            <ShellContent ContentTemplate="{DataTemplate views:RegisterContactPage}" Route="RegisterShell" />
+        </Tab>
+    </TabBar>
+
 
 </Shell>
